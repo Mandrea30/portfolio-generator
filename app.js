@@ -15,15 +15,33 @@ const inquirer = require('inquirer');
 
 const promptUser = () => {
 return inquirer.prompt([
+  //User Name
   {
     type: 'input',
     name: 'name',
-    message: 'What is your name?'
+    message: 'What is your name? (Required)',
+    validate: nameInput => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log('Please enter your name!');
+        return false;
+      }
+    }
   },
+  //Github Username
   {
     type: 'input',
     name: 'github',
-    message: "Enter your Github Username'"
+    message: 'Enter your Github Username. (Required)',
+    validate: nameInput => {
+      if (nameInput){
+        return true;
+      } else {
+        console.log('Please enter your user name!');
+        return false;
+      }
+    }
   },
   {
     type: 'input',
@@ -45,10 +63,19 @@ const promptProject = portfolioData  => {
     }
 
     return inquirer.prompt([
+      //Project Description
       {
         type: 'input',
         name: 'name',
-        message: 'provide a description of the project (Required)'
+        message: 'provide a description of the project (Required)',
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log('Please describe your project!');
+            return false;
+          }
+        }
       },
       {
         type: 'checkbox',
@@ -56,10 +83,19 @@ const promptProject = portfolioData  => {
         messsage: 'What did you build this project with? (Check all the choices that apply)',
         choices: ['javaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootsrap', 'Node']
       },
+      //Project Github Link
       {
         type: 'input',
         name: 'link',
-        message: 'Enter the Github link to your project. (Required)'
+        message: 'Enter the Github link to your project. (Required)',
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log('Please provide a link!');
+            return false;
+          }
+        }
       },
       {
         type: 'confirm',
